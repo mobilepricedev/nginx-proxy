@@ -96,9 +96,9 @@ server {
 
 server {
 	server_name _; # This is just an invalid value which will never trigger on a real hostname.
-	listen 8080;
+	listen 8888;
 	{{ if $enable_ipv6 }}
-	listen [::]:8080;
+	listen [::]:8888;
 	{{ end }}
 	access_log /var/log/nginx/access.log vhost;
 	return 503;
@@ -207,9 +207,9 @@ server {
 
 server {
 	server_name {{ $host }};
-	listen 8080 {{ $default_server }};
+	listen 8888 {{ $default_server }};
 	{{ if $enable_ipv6 }}
-	listen [::]:8080 {{ $default_server }};
+	listen [::]:8888 {{ $default_server }};
 	{{ end }}
 	access_log /var/log/nginx/access.log vhost;
 	return 301 https://$host$request_uri;
